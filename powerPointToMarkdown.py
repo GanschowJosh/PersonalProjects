@@ -1,3 +1,6 @@
+"""
+takes every .pptx file in a given directory and outputs converted to md in a specified directory
+"""
 import os
 from pptx2md import convert
 
