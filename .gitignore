@@ -2,4 +2,6 @@
 /Chess
 /__pycache__
 /ctf.py
-/cheatsheet.png-
+/cheatsheet.png
+/divisibilityContradiction.py
+/perfectSquareContradiction.py
