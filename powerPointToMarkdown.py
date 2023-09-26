@@ -3,8 +3,6 @@ takes every .pptx file in a given directory and outputs converted to md in a spe
 """
 import os
 from pptx2md import convert
-import glob
-import fileinput
 
 def convertPPTX2MD(inputFolder, outputFolder):
     if not os.path.exists(outputFolder):
