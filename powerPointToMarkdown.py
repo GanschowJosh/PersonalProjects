@@ -20,6 +20,8 @@ def convertPPTX2MD(inputFolder, outputFolder):
             continue
     mergeMdFiles(outputFolder)
 
+def formatting(string):
+    return string.replace(" __", "__").replace("\\-", "-").replace("\\.", ".").replace("\\,", ",").replace("\\(", "(").replace("\\)", ")").replace("\\#", "#").replace("\\+", "+").replace("\\!", "!").replace("\\[", "[").replace("\\]", "]").replace("\\_", "_")
 
 def mergeMdFiles(directory):
     mergedContent = ""
@@ -31,8 +33,8 @@ def mergeMdFiles(directory):
             # Open the .md file
             with open(os.path.join(directory, filename), 'r', encoding='utf-8') as file:
                 # Read the content and add it to the merged content
-                mergedContent += file.read() + "\n\n"
-    
+                mergedContent += formatting(file.read()) + "\n\n"
+                
     # Write the merged content to a new .md file
     with open(os.path.join(directory, "Merged.md"), 'w', encoding='utf-8') as file:
         file.write(mergedContent)
