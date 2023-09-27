@@ -1,25 +1,38 @@
-def modulo_solitaire(m: int, n: int, k: int, pairs: list[tuple[int, int]]) -> int:
-    """
-    This function takes in three integers m, n, and k and a list of n pairs of integers.
-    It returns an integer that is the minimum number of moves required to win the game.
-    """
-    # Create a list of length m+1 and initialize all elements to 0
-    dp = [0] * (m+1)
-    
-    # Iterate over the pairs and update the dp array
-    for i in range(n):
-        a, b = pairs[i]
-        for j in range(m+1):
-            if dp[j] == i:
-                dp[(j+a)%m] = i+1
-                dp[(j+b)%m] = i+1
-    
-    # Return the minimum number of moves required to win the game
-    return dp[k]
+from collections import deque
 
-m, n, k = list(map(int, input().split()))
-pairs = []
+# Read the initial parameters
+m, n, s0 = map(int, input().split())
+
+# Read the transformation pairs
+transformations = []
 for _ in range(n):
-    pairs.append(list(map(int, input().split())))
+    a, b = map(int, input().split())
+    transformations.append((a, b))
 
-print(modulo_solitaire(m, n, k, pairs))
+# Initialize the queue and the visited set
+queue = deque([(s0, 0)])
+visited = set()
+
+# Process states in the queue
+while queue:
+    current_state, distance = queue.popleft()
+
+    # Skip if this state has been visited before
+    if current_state in visited:
+        continue
+
+    # Mark this state as visited
+    visited.add(current_state)
+
+    # Check if we've reached the target state
+    if current_state == 0:
+        print(distance)
+        exit(0)
+
+    # Add all possible next states to the queue
+    for a, b in transformations:
+        next_state = (current_state * a + b) % m
+        queue.append((next_state, distance + 1))
+
+# If we've exhausted all states and haven't found a path to 0, print -1
+print(-1)
