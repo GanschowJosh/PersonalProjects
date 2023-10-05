@@ -30,4 +30,4 @@ for i in range(1, 101):
     print(output or i)
 """
 #Version 4: One Liner!!
-#for i in range(1, 101): print('Fizz'*(i%3==0) + 'Buzz'*(i%5==0) or i)
+for i in range(1,101):print('Fizz'*(i%3==0)+'Buzz'*(i%5==0) or i)
