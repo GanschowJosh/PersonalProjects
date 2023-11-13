@@ -1,6 +1,7 @@
 # PersonalProjects
-Side projects I'm working on
+
 Includes:
-    AES Decryption given p, q, and e
-    Convert full directory from PowerPoint (.PPTX) to Markdown (.md) and makes formatting clearer
-    Kattis Projects
+- PowerPoint (.pptx) to Markdown (.md) converter. Takes input and output paths and converts entire directory. Markdown files are then merged into one.
+- Kattis Problems (for ICPC)
+- Code Golf
+- Leetcode
